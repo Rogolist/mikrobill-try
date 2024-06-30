@@ -20,6 +20,8 @@ services:
     depends_on:
       - mikrobill
   db:
+    env_file: .env
+    build: ./etc/db
     image: mysql:8
     container_name: ${APP_NAME}_db
     environment:
@@ -27,9 +29,15 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     restart: always
     volumes:
       - "db-data:/var/lib/mysql"
+      #- "./etc/db/data:/var/lib/mysql"
+      #https://github.com/lagoon-io/mysql8-docker-container/blob/master/docker-compose.yml
+      #- './docker/db/data:/var/lib/mysql'
+      #- './docker/db/my.cnf:/etc/mysql/conf.d/my.cnf'
+      #- './docker/db/sql:/docker-entrypoint-initdb.d'
     command: [
       '--character-set-server=utf8mb4',
       '--collation-server=utf8mb4_unicode_ci',
@@ -37,6 +45,8 @@ services:
     ]
     expose:
       - 3306
+    ports:
+      - '3306:3306'
   proxysql:
     env_file: .env
     build: ./etc/proxysql
