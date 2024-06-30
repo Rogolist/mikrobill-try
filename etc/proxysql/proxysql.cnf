@@ -23,8 +23,8 @@ mysql_variables=
     stacksize=1048576
     server_version="5.5.30"
     connect_timeout_server=3000
-    monitor_username=${MYSQL_USER}
-    monitor_password=${MYSQL_PASSWORD}
+    monitor_username="mikrobill"
+    monitor_password="mikrobill_pw"
     monitor_history=600000
     monitor_connect_interval=60000
     monitor_ping_interval=10000
@@ -66,6 +66,6 @@ mysql_servers =
 
 mysql_users =
 (
-    { username = ${MYSQL_USER} , password = ${MYSQL_PASSWORD} , default_hostgroup = 10 , active = 1 },
-    { username = "root" , password = ${MYSQL_ROOT_PASSWORD} , default_hostgroup = 10 , active = 1 }
+    { username = "mikrobill" , password = "mikrobill_pw" , default_hostgroup = 10 , active = 1 },
+    { username = "root" , password = "root_mikrobill" , default_hostgroup = 10 , active = 1 }
 )
