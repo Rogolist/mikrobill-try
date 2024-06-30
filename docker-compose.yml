@@ -20,20 +20,23 @@ services:
     depends_on:
       - mikrobill
   db:
+  #https://github.com/mysql/mysql-docker/tree/mysql-server/8.0
     env_file: .env
-    build: ./etc/db
-    image: mysql:8
+    #build:
+      #context: ./etc/db
+    #image: mysql:8
+    image: mariadb
     container_name: ${APP_NAME}_db
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    restart: always
+      #MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    #restart: always
     volumes:
       - "db-data:/var/lib/mysql"
-      #- "./etc/db/data:/var/lib/mysql"
+      #- "./etc/db/data:/var/lib/mysql" это интерсный вариант: таблицы создаются в папке
       #https://github.com/lagoon-io/mysql8-docker-container/blob/master/docker-compose.yml
       #- './docker/db/data:/var/lib/mysql'
       #- './docker/db/my.cnf:/etc/mysql/conf.d/my.cnf'
@@ -45,8 +48,8 @@ services:
     ]
     expose:
       - 3306
-    ports:
-      - '3306:3306'
+    #ports:
+      #- '3306:3306'
   proxysql:
     env_file: .env
     build: ./etc/proxysql
