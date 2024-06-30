@@ -1,3 +1,16 @@
+Fork костыльный для тестового использования,
+проверялся только на Debian 11 и с MySQL 5.6 (с версией MySQL 8 работать отказывается, а MySQL 5.5 не может корректно создать таблицы МикроБилл),
+
+Docker version 27.0.2, build 912c1dd
+Docker Compose version v2.28.1
+
+MikroBILL_11.06.2024_15-08.zip закачивается с локального адреса (мне нужна была конкретная версия)
+
+известные проблемы
+- ZIP бэкапы успешно создаются, но не принимаются обратно. Пока внести данные можно только через XML с другого компьютера.
+- файлы в основной системе создаются от рута, поэтому их приходится вручную удалять (sudo rm -rf etc/mikrobill/backup)
+
+-------------------
 <h2 style="color:#FF0000">Auto deployment MikroBILL via docker-compose</h2>
 
 <h3 style="color:#FF0000">MikroBILL is a complete billing platform for Mikrotik routers (RouterOS)</h3>

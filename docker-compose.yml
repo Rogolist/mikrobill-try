@@ -139,7 +139,7 @@ services:
       - mikrobill:/var/MikroBILL:rw
       - "./etc/mikrobill/entrypoint.sh:/bin/entrypoint.sh"
       - "./etc/log/mikrobill/Log.txt:/var/MikroBILL/Log.txt"
-      - "./etc/mikrobill/backup:/var/MikroBILL/Backup"
+      - "./etc/mikrobill/backup:/var/MikroBILL/Backup:rw"
     links:
       - db:mysql
     expose:
