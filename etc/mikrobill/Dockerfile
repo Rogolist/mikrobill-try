@@ -37,7 +37,7 @@ RUN curl -fSL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Runt
 
 RUN mkdir -p /home/MikroBILL
 #RUN wget -O /home/MikroBILL.zip http://mikro-bill.com/downloads/stable
-RUN wget -O /home/MikroBILL.zip http://192.168.78.10/fordownload/MikroBILL_04.05.2024_14-30.zip
+RUN wget -O /home/MikroBILL.zip http://192.168.78.10/fordownload/MikroBILL_11.06.2024_15-08.zip
 RUN unzip /home/MikroBILL.zip -d /home/MikroBILL && chmod -R a+rX /home/MikroBILL/web && chown -R www-data:www-data /home/MikroBILL/web && rm /home/MikroBILL.zip
 
 WORKDIR /root
