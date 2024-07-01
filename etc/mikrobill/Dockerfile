@@ -8,6 +8,9 @@ ARG BRANCH=master
 #https://www.tipoit.kz/winlogbeat-no-events-wil-be-read
 #https://qa.yodo.im/t/vremya-i-chasovoj-poyas-kontejnera-docker-ne-budut-otrazhat-izmeneniya/1806/3
 #RUN timedatectl set-timezone Europe/Berlin
+# Relocate the timezone file
+RUN mkdir -p /config/etc && mv /etc/timezone /config/etc/ && ln -s /config/etc/timezone /etc/
+RUN echo "Europe/Berlin" > /config/etc/timezone
 
 RUN apt-get update && apt-get -y install wget gnupg unzip mc cron bash socat curl procps openssl udev
 
