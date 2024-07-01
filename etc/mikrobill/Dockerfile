@@ -5,6 +5,8 @@ FROM debian:bullseye
 WORKDIR /home
 ARG BRANCH=master
 
+RUN timedatectl set-timezone Europe/Berlin
+
 RUN apt-get update && apt-get -y install wget gnupg unzip mc cron bash socat curl procps openssl udev
 
 RUN apt-get update \

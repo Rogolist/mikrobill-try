@@ -36,9 +36,9 @@ services:
       #MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     restart: always
     volumes:
-      "./etc/log/db:/var/log"
+      #"./etc/log/db:/var/log"
       - /etc/localtime:/etc/localtime
-      # вот эта строка стоила мне многих нервов (
+      # вот эта строка стоила мне многих нервов https://stackoverflow.com/questions/58090668/where-is-a-mysql-volume-db-data-var-lib-mysql-data-stored
       - "db-data:/var/lib/mysql"
       #- "./etc/db/data:/var/lib/mysql" это интерсный вариант: таблицы создаются в папке
       #https://github.com/lagoon-io/mysql8-docker-container/blob/master/docker-compose.yml
