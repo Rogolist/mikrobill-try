@@ -9,6 +9,7 @@ services:
     entrypoint: sh /bin/entrypoint.sh php-fpm
     restart: always
     volumes:
+      - /etc/localtime:/etc/localtime
       - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
       - "./etc/php/entrypoint.sh:/bin/entrypoint.sh"
       - "./etc/log/php:/var/log"
@@ -35,6 +36,9 @@ services:
       #MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     restart: always
     volumes:
+      "./etc/log/db:/var/log"
+      - /etc/localtime:/etc/localtime
+      # вот эта строка стоила мне многих нервов (
       - "db-data:/var/lib/mysql"
       #- "./etc/db/data:/var/lib/mysql" это интерсный вариант: таблицы создаются в папке
       #https://github.com/lagoon-io/mysql8-docker-container/blob/master/docker-compose.yml
@@ -87,6 +91,7 @@ services:
     build: ./etc/httpd
     restart: always
     volumes:
+      - /etc/localtime:/etc/localtime
       - "./etc/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf"
       - "./etc/log/apache:/var/log"
       - ${APP_PATH}:/var/www
@@ -103,6 +108,7 @@ services:
       - 9443:443
     restart: always
     volumes:
+      - /etc/localtime:/etc/localtime
       - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - mikrobill-cert:/etc/nginx/ssl/live/mikrobill:ro
       - mikrobill-task:/etc/nginx/task:rw
