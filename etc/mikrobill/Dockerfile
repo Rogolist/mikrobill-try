@@ -5,7 +5,9 @@ FROM debian:bullseye
 WORKDIR /home
 ARG BRANCH=master
 
-RUN timedatectl set-timezone Europe/Berlin
+#https://www.tipoit.kz/winlogbeat-no-events-wil-be-read
+#https://qa.yodo.im/t/vremya-i-chasovoj-poyas-kontejnera-docker-ne-budut-otrazhat-izmeneniya/1806/3
+#RUN timedatectl set-timezone Europe/Berlin
 
 RUN apt-get update && apt-get -y install wget gnupg unzip mc cron bash socat curl procps openssl udev
 

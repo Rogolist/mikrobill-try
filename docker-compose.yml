@@ -146,6 +146,8 @@ services:
       - "./etc/mikrobill/entrypoint.sh:/bin/entrypoint.sh"
       - "./etc/log/mikrobill/Log.txt:/var/MikroBILL/Log.txt"
       - "./etc/mikrobill/backup:/var/MikroBILL/Backup:rw"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     links:
       - db:mysql
     expose:
