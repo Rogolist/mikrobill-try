@@ -5,7 +5,7 @@ FROM debian:bullseye
 WORKDIR /home
 ARG BRANCH=master
 
-RUN apt-get update && apt-get -y install wget gnupg unzip mc cron bash socat curl procps openssl
+RUN apt-get update && apt-get -y install wget gnupg unzip mc cron bash socat curl procps openssl udev
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
